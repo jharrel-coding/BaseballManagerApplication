@@ -1,5 +1,6 @@
 package com.jason.baseballmanagerapplication.services;
 
+import com.jason.baseballmanagerapplication.models.Game;
 import com.jason.baseballmanagerapplication.models.Player;
 import com.jason.baseballmanagerapplication.models.Team;
 import com.jason.baseballmanagerapplication.repositories.PlayerRepository;
@@ -33,11 +34,5 @@ public class PlayerService {
     public void deleteById(Long id) {
         playerRepository.deleteById(id);
     }
-
-//    public void assignTrainer(Dog dog, Trainer trainer) {
-//        List<Trainer> trainers=dog.getTrainers();
-//        trainers.add(trainer);
-//        dogRepository.save(dog);
-//    }
 
 }

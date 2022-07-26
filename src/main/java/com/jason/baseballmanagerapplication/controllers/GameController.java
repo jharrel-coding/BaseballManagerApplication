@@ -56,9 +56,6 @@ public class GameController {
         model.addAttribute("team", teamService.getById(id));
         model.addAttribute("game", gameService.getById(id));
         model.addAttribute("allPlayers", playerService.getAll());
-//		model.addAttribute("allTrainers", trainerService.getAll());
-
-//        model.addAttribute("allTrainers", trainerService.getAll(dogService.getById(id)));
 
         return "viewGame.jsp";
 
@@ -93,28 +90,5 @@ public class GameController {
 
         return "redirect:/games";
     }
-
-    //	Method updated to get all the trainers from DB and show it on profile page
-//    @GetMapping("/players/{id}")
-//    public String profile(@PathVariable Long id, Model model) {
-//        model.addAttribute("player", playerService.getById(id));
-////		model.addAttribute("allTrainers", trainerService.getAll());
-//
-//        model.addAttribute("allTeams", teamService.getAll(playerService.getById(id)));
-//
-//        return "profile.jsp";
-//
-//    }
-
-//	Assign Trainer
-
-//    @PostMapping("/assign/{id}")
-//    public String assign(@PathVariable Long id, @RequestParam Long teamId) {
-//        Player player=playerService.getById(id);
-//        Team team=teamService.getById(teamId);
-//        playerService.assignTeam(Team, team);
-//        return "redirect:/players/{id}";
-//    }
-
 }
 

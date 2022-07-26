@@ -26,10 +26,27 @@
     <h1>${ team.city } ${ team.teamName }'s Details</h1>
     <p>Ballpark: ${ team.ballpark }</p>
     <p>${ team.teamName } are located in: ${ team.city }, ${ team.state }</p>
+    <table class="table-striped table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Hits/Throws</th>
+        </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="player" items="${ team.players }">
+                <tr>
+                    <td><c:out value="${ player.jerseyNumber }" /></td>
+                    <td><c:out value="${ player.fullName() }" /></td>
+                    <td><c:out value="${ player.playerPosition }" /></td>
+                    <td><c:out value="${ player.hittingHand } / ${ player.hittingHand }" /></td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 
-    <c:forEach var="player" items="${ team.players}">
-        <c:out value="${ player.firstName }" />
-    </c:forEach>
 
 
 </div>

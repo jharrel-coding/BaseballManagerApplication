@@ -2,6 +2,7 @@ package com.jason.baseballmanagerapplication.controllers;
 
 import com.jason.baseballmanagerapplication.models.Player;
 import com.jason.baseballmanagerapplication.models.Team;
+import com.jason.baseballmanagerapplication.services.GameService;
 import com.jason.baseballmanagerapplication.services.PlayerService;
 import com.jason.baseballmanagerapplication.services.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +21,25 @@ public class MainController {
     private PlayerService playerService;
     @Autowired
     private TeamService teamService;
-//    @Autowired
-//    private GameService gameService;
+
+    @Autowired
+    private GameService gameService;
 
 
     @GetMapping("/")
+    public String dashboard(Model model) {
+        model.addAttribute("allPlayers", playerService.getAll());
+        model.addAttribute("allTeams", teamService.getAll());
+        model.addAttribute("allGames", gameService.getAll());
+        return "dashboard.jsp";
+    }
+
+    @GetMapping("/players")
     public String players(Model model) {
         model.addAttribute("allPlayers", playerService.getAll());
         return "players.jsp";
     }
+
     @GetMapping("/players/new")
     public String newPlayer(@ModelAttribute("newPlayer") Player newPlayer, Model model) {
         model.addAttribute("allTeams", teamService.getAll());
@@ -75,27 +86,5 @@ public class MainController {
 
         return "redirect:/";
     }
-
-    //	Method updated to get all the trainers from DB and show it on profile page
-//    @GetMapping("/players/{id}")
-//    public String profile(@PathVariable Long id, Model model) {
-//        model.addAttribute("player", playerService.getById(id));
-////		model.addAttribute("allTrainers", trainerService.getAll());
-//
-//        model.addAttribute("allTeams", teamService.getAll(playerService.getById(id)));
-//
-//        return "profile.jsp";
-//
-//    }
-
-//	Assign Trainer
-
-//    @PostMapping("/assign/{id}")
-//    public String assign(@PathVariable Long id, @RequestParam Long teamId) {
-//        Player player=playerService.getById(id);
-//        Team team=teamService.getById(teamId);
-//        playerService.assignTeam(Team, team);
-//        return "redirect:/players/{id}";
-//    }
 
 }
